@@ -1,0 +1,54 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>LoveIt - Category - Pipx</title>
+        <link>https://example.com/categories/loveit/</link>
+        <description>LoveIt - Category - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 17 May 2020 11:51:36 &#43;0800</lastBuildDate><atom:link href="https://example.com/categories/loveit/" rel="self" type="application/rss+xml" /><item>
+    <title>LoveIt-AddVideo</title>
+    <link>https://example.com/addvideo/</link>
+    <pubDate>Sun, 17 May 2020 11:51:36 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/addvideo/</guid>
+    <description><![CDATA[主题优化（二）：添加视频 在博文中插入保持宽高比的iframe视频
+问题描述： 视频无法根据页面宽度自动调整宽高比，导致视频在手机这种小屏幕上会出现上下黑边。
+解决方案： 这个问题可以使用CSS来解决。最简单的方式就是将视频的iframe放在一个保持宽高比的div中（代码源自此处）：
+(1)打开~\themes\主题名\assets\css，在—_custom.scss中添加
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  /* 这个规则规定了iframe父元素容器的尺寸，16:9的近似值为56%*/ .selfadapting-video { position: relative;width: 100%;height: 0;padding-bottom: 56%; /* 高度应该是宽度的56% */} /* 设定iframe的宽度和高度，让iframe占满整个父元素容器 */.selfadapting-video iframe { position: absolute;width: 100%;height: 100%;left: 0;top: 0;}  (2)删去iframe中关于高度和宽度的设定，将其添加到 &lt;div class=&quot;selfadapting-video-bilibili&quot;&gt; ... &lt;/div&gt;之中：
+1 2 3  &lt;div class=&#34;selfadapting-video&#34;&gt;&lt;iframe src=&#39;https://player.]]></description>
+</item><item>
+    <title>LoveIt-AddImage</title>
+    <link>https://example.com/addimg/</link>
+    <pubDate>Sun, 17 May 2020 10:40:36 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/addimg/</guid>
+    <description><![CDATA[1.普通插入，遵循markdown插入语法 2.实现图片轮播 看这里——&gt;参考此篇文档
+例子如下(My DesktopImages) #slide-window {position: relative;width: 695.333px;height: 350px;overflow: hidden;top: 0px;left: 0px;}#slides-list {width: 695.333px;height: 350px;position: absolute;margin: 0px;padding: 0px;-webkit-transform: translate3d(0px, 0px, 0px);transform: translate3d(0px, 0px, 0px);transition: all 0.66s ease;-webkit-transition: all 0.66s ease;}.slide {list-style: none;position: relative;float: left;margin: 0;padding: 0;width: 695.333px;height: 350px;background: #ccc;text-align: center;line-height: 100%;background-size: cover;background-position: 50% 50%;color: #fff;-webkit-transform: translate3d(0px, 0px, 0px);-webkit-transform-style: preserve-3d;}.]]></description>
+</item><item>
+    <title>LoveIt-AddMusic</title>
+    <link>https://example.com/addmusic/</link>
+    <pubDate>Sun, 17 May 2020 10:40:36 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/addmusic/</guid>
+    <description><![CDATA[主题优化（一）：添加音乐 由于qq音乐版权维护比较严重，在此处转为使用网易云音乐
+添加音乐外链有多种方法实现
+1.进入网易云音乐网页版 实现起来比较简单,打开网易云网页版,搜索一首歌(ps:歌曲没有版权保护，可生成外链),直接把外链链接复制到博客中就可以了。
+由于此方法缺点较多，没有歌词，有很多受版权保护的歌曲无法生成外链等等，这里就不多说了，强烈建议使用第二种方法。
+2.使用Aplayer和MetingJS实现 使用平台：网易云音乐 操作简单
+(1)在博客的head.html中添加一下代码
+1 2 3 4 5 6  &lt;!-- require APlayer --&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css&#34;&gt;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js&#34;&gt;&lt;/script&gt; &lt;!-- require MetingJS --&gt;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js&#34;&gt;&lt;/script&gt;   (2)在博文中需要的位置添加以下代码
+1  &lt;meting-js auto=&#34;link&#34; list-folded=true&gt;&lt;/meting-js&gt;   上述link是你打开网易云的音乐链接，list-folded=true是在有多首歌曲时默认折叠列表
+例子 光年之外的音乐链接
+1  &lt;meting-js auto=&#34;https://music.163.com/#/song?id=449818741&#34; list-folded=true&gt;&lt;/meting-js&gt;   3.悬浮音乐播放器的设置 在此特别感谢 code show
+为实现随时播放和暂停音乐，符合阅读习惯，特寻找到悬浮播放器的设置
+（1）在你的博客主题partials文件夹中添加music.html文件
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67  &lt;!]]></description>
+</item><item>
+    <title>LoveIt-emoji</title>
+    <link>https://example.com/emoji/</link>
+    <pubDate>Sun, 17 May 2020 00:00:36 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/emoji/</guid>
+    <description><![CDATA[<h1 id="emoji-支持">Emoji 支持</h1>
+<p>Emoji 可以通过多种方式在 Hugo 项目中启用.</p>]]></description>
+</item></channel>
+</rss>

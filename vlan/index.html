@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Vlan的划分 - Pipx</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="Vlan的划分" />
+<meta property="og:description" content="ip地址分类 在 A 类、B 类、C 类 IP 地址中：
+  如果主机号是全 1，那么这个地址为直接广播地址，它是用来使路由器将一个分组以广播形式发送给特定网络上的所有主机。
+  32 位全为 1 的 IP 地址 “255.255.255.255” 为受限广播地址用来将一个分组以广播方式发送给本网络中的所有主机，路由器则阻挡该分组通过，将其广播功能限制在本网内部。
+    A类IPv4地址 B类IPv4地址 C类IPv4地址 D类IPv4地址 E类IPv4地址     网络标志位 0 10 110 1110 11110   IP地址范围 1.0.0.0~127.255.255.255 128.0.0.0~191.255.255.255 192.0.0.0~223.255.255.255 224.0.0.0~239.255.255.255 240.0.0.0~247.255.255.255   可用IP地址范围 1.0.0.1~127.255.255.254 128.0.0.1~191.255.255.254 192.0.0.1~223.255.255.254     是否可以分配给主机使用 是 是 是 否 否   网络数量（个） 126 (27-2) 16384 (214) 2097152 (221) &mdash; &mdash;   每个网络中可容纳主机数（个） 16777214 (224-2) 65534 (216-2) 254 (28-2) &mdash; &mdash;   适用范围 大量主机的大型网络 中等规模主机数的网络 小型局域网 留给Internet体系结构委员会(IAB)使用【组播地址】 保留，仅作为搜索、Internet的实验和开发用   私有地址 10." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/vlan/" />
+<meta property="og:image" content="https://example.com/logo.png"/>
+<meta property="article:published_time" content="2020-05-16T21:47:00+08:00" />
+<meta property="article:modified_time" content="2020-05-16T21:47:00+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/logo.png"/>
+
+<meta name="twitter:title" content="Vlan的划分"/>
+<meta name="twitter:description" content="ip地址分类 在 A 类、B 类、C 类 IP 地址中：
+  如果主机号是全 1，那么这个地址为直接广播地址，它是用来使路由器将一个分组以广播形式发送给特定网络上的所有主机。
+  32 位全为 1 的 IP 地址 “255.255.255.255” 为受限广播地址用来将一个分组以广播方式发送给本网络中的所有主机，路由器则阻挡该分组通过，将其广播功能限制在本网内部。
+    A类IPv4地址 B类IPv4地址 C类IPv4地址 D类IPv4地址 E类IPv4地址     网络标志位 0 10 110 1110 11110   IP地址范围 1.0.0.0~127.255.255.255 128.0.0.0~191.255.255.255 192.0.0.0~223.255.255.255 224.0.0.0~239.255.255.255 240.0.0.0~247.255.255.255   可用IP地址范围 1.0.0.1~127.255.255.254 128.0.0.1~191.255.255.254 192.0.0.1~223.255.255.254     是否可以分配给主机使用 是 是 是 否 否   网络数量（个） 126 (27-2) 16384 (214) 2097152 (221) &mdash; &mdash;   每个网络中可容纳主机数（个） 16777214 (224-2) 65534 (216-2) 254 (28-2) &mdash; &mdash;   适用范围 大量主机的大型网络 中等规模主机数的网络 小型局域网 留给Internet体系结构委员会(IAB)使用【组播地址】 保留，仅作为搜索、Internet的实验和开发用   私有地址 10."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/vlan/" /><link rel="prev" href="https://example.com/english-01/" /><link rel="next" href="https://example.com/2019-ncov/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+ <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+ <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Vlan的划分",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/vlan\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/example.com\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "vlan","wordcount":  162 ,
+        "url": "https:\/\/example.com\/vlan\/","datePublished": "2020-05-16T21:47:00+08:00","dateModified": "2020-05-16T21:47:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/example.com\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "pipx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Pipx"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>pipx</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章"> Posts </a><a class="menu-item" href="/tags/" title="标签"> Tags </a><a class="menu-item" href="/categories/" title="分类"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Sunonx/Sunonx.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Pipx"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>pipx</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章">Posts</a><a class="menu-item" href="/tags/" title="标签">Tags</a><a class="menu-item" href="/categories/" title="分类">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Sunonx/Sunonx.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Vlan的划分</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>pipx</a></span>&nbsp;
+                    <span class="post-category">included in<a href="/categories/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/">
+                                <i class="far fa-folder fa-fw"></i>路由交换
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-05-16>2020-05-16</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>&nbsp;about 162 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;1 min&nbsp;<span id="/vlan/" class="leancloud_visitors" data-flag-title="Vlan的划分">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#ip地址分类">ip地址分类</a></li>
+        <li><a href="#vlan-的划分">Vlan 的划分</a></li>
+        <li><a href="#例题分析">例题分析</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="ip地址分类">ip地址分类</h3>
+<p>在 A 类、B 类、C 类 IP 地址中：</p>
+<ul>
+<li>
+<p>如果主机号是全 1，那么这个地址为直接广播地址，它是用来使路由器将一个分组以广播形式发送给特定网络上的所有主机。</p>
+</li>
+<li>
+<p>32 位全为 1 的 IP 地址 “255.255.255.255” 为<strong>受限广播地址</strong>用来将一个分组以广播方式发送给本网络中的所有主机，<code>路由器</code>则阻挡该分组通过，将其广播功能限制在本网内部。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"><strong>A类IPv4地址</strong></th>
+<th align="center"><strong>B类IPv4地址</strong></th>
+<th align="center"><strong>C类IPv4地址</strong></th>
+<th align="center"><strong>D类IPv4地址</strong></th>
+<th align="center"><strong>E类IPv4地址</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>网络标志位</strong></td>
+<td align="center"><strong>0</strong></td>
+<td align="center"><strong>10</strong></td>
+<td align="center"><strong>110</strong></td>
+<td align="center"><strong>1110</strong></td>
+<td align="center"><strong>11110</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>IP地址范围</strong></td>
+<td align="center"><strong>1.0.0.0~127.255.255.255</strong></td>
+<td align="center"><strong>128.0.0.0~191.255.255.255</strong></td>
+<td align="center"><strong>192.0.0.0~223.255.255.255</strong></td>
+<td align="center"><strong>224.0.0.0~239.255.255.255</strong></td>
+<td align="center"><strong>240.0.0.0~247.255.255.255</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>可用IP地址范围</strong></td>
+<td align="center"><strong>1.0.0.1~127.255.255.254</strong></td>
+<td align="center"><strong>128.0.0.1~191.255.255.254</strong></td>
+<td align="center"><strong>192.0.0.1~223.255.255.254</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>是否可以分配给主机使用</strong></td>
+<td align="center"><strong>是</strong></td>
+<td align="center"><strong>是</strong></td>
+<td align="center"><strong>是</strong></td>
+<td align="center"><strong>否</strong></td>
+<td align="center"><strong>否</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>网络数量（个）</strong></td>
+<td align="center"><strong>126 (27-2)</strong></td>
+<td align="center"><strong>16384 (214)</strong></td>
+<td align="center"><strong>2097152 (221)</strong></td>
+<td align="center"><strong>&mdash;</strong></td>
+<td align="center"><strong>&mdash;</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>每个网络中可容纳主机数（个）</strong></td>
+<td align="center"><strong>16777214 (224-2)</strong></td>
+<td align="center"><strong>65534 (216-2)</strong></td>
+<td align="center"><strong>254 (28-2)</strong></td>
+<td align="center"><strong>&mdash;</strong></td>
+<td align="center"><strong>&mdash;</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>适用范围</strong></td>
+<td align="center"><strong>大量主机的大型网络</strong></td>
+<td align="center"><strong>中等规模主机数的网络</strong></td>
+<td align="center"><strong>小型局域网</strong></td>
+<td align="center"><strong>留给Internet体系结构委员会(IAB)使用【组播地址】</strong></td>
+<td align="center"><strong>保留，仅作为搜索、Internet的实验和开发用</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>私有地址</strong></td>
+<td align="center"><strong>10.0.0.0～10.255.255.255</strong>(256个B)</td>
+<td align="center"><strong>172.16.0.0～172.31.255.255</strong>(16个B)</td>
+<td align="center"><strong>192.168.0.0～192.168.255.255</strong>(1个B)</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p><strong>[注意]</strong>:要判断两个IP地址是不是在同一个网段，就将它们的IP地址分别与子网掩码做与运算，得到的结果一网络号，如果网络号相同，就在同一子网，否则，不在同一子网。</p>
+<h3 id="vlan-的划分">Vlan 的划分</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Switch&gt;en
+Switch#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 3
+Switch(config-vlan)#name VLAN3                  //命名
+Switch(config-vlan)#exit
+Switch(config)#interface range fa0/3 - 6        //多端口同时添加
+Switch(config-if-range)#switchport mode access  //设置端口模式为access
+Switch(config-if-range)#switchport access vlan 3
+Switch(config-if-range)#end
+Switch#show vlan brief                          //查看端口信息
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意</strong>：若两台交换机之间端口模式为<strong>access</strong>，且交换机AB处于<code>vlan 1</code>，但交换机A中的用户1处于 <code>vlan 2</code>则通信时消息无法由A-&gt;B，若交换机A中的用户2也处于 <code>vlan 1</code>则通信时消息可以由A-&gt;B.为避免这种麻烦，一般都将两交换机的端口模式设为 <strong>trunk</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Switch#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#interface fa0/4
+Switch(config-if)#switchport mode trunk   //设置端口为trunk
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>当电脑和路由器相连时需要设置 <strong>网关</strong></p>
+</li>
+<li>
+<p>当两路由器两连采用静态路由时，不要忘记配置 路由路径</p>
+<p>-路径形式：<code>Switch(config)#ip route 192.168.3.0(目标网段) 255.255.255.0 192.168.2.2（下一跳的进入端口号地址或用端口号代替）</code></p>
+</li>
+</ul>
+<h3 id="例题分析">例题分析</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/001.png"
+        data-srcset="https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/001.png, https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/001.png 1.5x, https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/001.png 2x"
+        data-sizes="auto"
+        alt="001.png"
+        title="001.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/002.png"
+        data-srcset="https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/002.png, https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/002.png 1.5x, https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/002.png 2x"
+        data-sizes="auto"
+        alt="002.png"
+        title="002.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/003.png"
+        data-srcset="https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/003.png, https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/003.png 1.5x, https://raw.githubusercontent.com/Sunonx/Sunonx.github.io/master/images/003.png 2x"
+        data-sizes="auto"
+        alt="003.png"
+        title="003.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2020-05-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/vlan/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://example.com/vlan/" data-title="Vlan的划分" data-via="xxxx" data-hashtags="vlan"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://example.com/vlan/" data-hashtag="vlan"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://example.com/vlan/" data-title="Vlan的划分" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://example.com/vlan/" data-title="Vlan的划分"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.12.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://example.com/vlan/" data-title="Vlan的划分"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="https://example.com/vlan/" data-title="Vlan的划分" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.12.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://example.com/vlan/" data-title="Vlan的划分" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://example.com/vlan/" data-title="Vlan的划分"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/vlan/">vlan</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/english-01/" class="prev" rel="prev" title="English学习笔记(1)"><i class="fas fa-angle-left fa-fw"></i>English学习笔记(1)</a>
+            <a href="/2019-ncov/" class="next" rel="next" title="2019-nCOV">2019-nCOV<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">pipx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

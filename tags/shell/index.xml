@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>shell - Tag - Pipx</title>
+        <link>https://example.com/tags/shell/</link>
+        <description>shell - Tag - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 May 2020 22:25:36 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/shell/" rel="self" type="application/rss+xml" /><item>
+    <title>The Use of Shell</title>
+    <link>https://example.com/the-use-of-shell/</link>
+    <pubDate>Sat, 16 May 2020 22:25:36 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/the-use-of-shell/</guid>
+    <description><![CDATA[Linus shell 一切从菜鸟开始
+$ sh deploy.sh 前言:用shell脚本部署markdown文章托管至github平台
+ windows下使用shell脚本需安装git 以下为脚本部署内容，deploy.sh 存放在本地站点目录下和public同级，参考一键备份博客源文件与发布文章到Github和Coding  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  #!/bin/bash echo &#34;............................&#34; echo &#34;.开始执行文章发布更新与同步.&#34; echo &#34;............................&#34; echo &#34;进入博客的public目录 /E:/Pipx Blog/mysite&#34; hugo -D echo &#34;进入博客的public目录 /E:/Pipx Blog/mysite/public&#34; cd public echo &#34;-----------------开始将public同步到origin---------------------&#34; git add . git commit -m &#34;update&#34; git pull origin master git push origin master echo &#34;同步到origin仓库完成...&#34; echo &#34;---------------同步public到仓库结束---------&#34;    脚步思路：将git命令串起来，由脚本一键部署 思考：如何同时将BLOG源文件部署到github上，因.]]></description>
+</item></channel>
+</rss>

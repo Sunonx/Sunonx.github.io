@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>emoji - Tag - Pipx</title>
+        <link>https://example.com/tags/emoji/</link>
+        <description>emoji - Tag - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 17 May 2020 00:00:36 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/emoji/" rel="self" type="application/rss+xml" /><item>
+    <title>LoveIt-emoji</title>
+    <link>https://example.com/emoji/</link>
+    <pubDate>Sun, 17 May 2020 00:00:36 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/emoji/</guid>
+    <description><![CDATA[<h1 id="emoji-支持">Emoji 支持</h1>
+<p>Emoji 可以通过多种方式在 Hugo 项目中启用.</p>]]></description>
+</item></channel>
+</rss>

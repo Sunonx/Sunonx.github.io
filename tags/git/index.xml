@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>git - Tag - Pipx</title>
+        <link>https://example.com/tags/git/</link>
+        <description>git - Tag - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 May 2020 18:51:36 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/git/" rel="self" type="application/rss+xml" /><item>
+    <title>Git版本控制问题集锦</title>
+    <link>https://example.com/git/</link>
+    <pubDate>Sat, 16 May 2020 18:51:36 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/git/</guid>
+    <description><![CDATA[git 初次使用git版本控制的时候，总是会遇到很多问题，在此我收集整理到了一些我遇到的问题及解决方法
+git命令速查
+问题集锦 问题一 在连接github时，执行 ssh -T git@github.com 命令时，出现以下错误
+ssh: connect to host github.com port 22: Connection timed out
+ 解决方法  https://blog.csdn.net/moxiaoya1314/article/details/80977703
+问题二 一个电脑上设置两个git账户
+ 解决方法  https://blog.csdn.net/one_girl/article/details/86238676
+问题三 无法ping通 github，即出现连接超时
+ 解决方法  原因：本地DNS无法解析
+如果出现端口22无法连接的情况，先改 config（C：user\.ssh\config）文件中Port 443
+打开C:\Windows\System32\drivers\etc\hosts 修改文件，
+参考 https://blog.csdn.net/hanchao5272/article/details/79393393
+问题四 git 使用出现 Permission denied (publickey). fatal: Could not read from remote repository.
+https://blog.csdn.net/YanceChen2013/article/details/82218356]]></description>
+</item></channel>
+</rss>

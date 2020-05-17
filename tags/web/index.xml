@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>web - Tag - Pipx</title>
+        <link>https://example.com/tags/web/</link>
+        <description>web - Tag - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 May 2020 20:47:11 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/web/" rel="self" type="application/rss+xml" /><item>
+    <title>前端学习路线</title>
+    <link>https://example.com/web-rode/</link>
+    <pubDate>Sat, 16 May 2020 20:47:11 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/web-rode/</guid>
+    <description><![CDATA[CVS SVN集中式 git分布式 github托管网站 git 版本控制管理工具 基础：HTML+CSS页面搭建，CS核心和PC端页面开发，HTML5移动端页面开发
+核心：web前端核心技术JavaScript，ecmasript，dom，ajax，json，正则，作用域，运动框架，核心算法，高级函数，插件封装，jQuery。
+高级：html5+高级JavaScript开发，大数据可视化，webapp交互接口，lbs定位，微信sdk，es6标准，高级算法，数据结构，插件封装。
+框架：bootstrap、vue、react、angular、sass企业开发应用。]]></description>
+</item></channel>
+</rss>

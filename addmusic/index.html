@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>LoveIt-AddMusic - Pipx</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="LoveIt-AddMusic" />
+<meta property="og:description" content="主题优化（一）：添加音乐 由于qq音乐版权维护比较严重，在此处转为使用网易云音乐
+添加音乐外链有多种方法实现
+1.进入网易云音乐网页版 实现起来比较简单,打开网易云网页版,搜索一首歌(ps:歌曲没有版权保护，可生成外链),直接把外链链接复制到博客中就可以了。
+由于此方法缺点较多，没有歌词，有很多受版权保护的歌曲无法生成外链等等，这里就不多说了，强烈建议使用第二种方法。
+2.使用Aplayer和MetingJS实现 使用平台：网易云音乐 操作简单
+(1)在博客的head.html中添加一下代码
+1 2 3 4 5 6  &lt;!-- require APlayer --&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css&#34;&gt;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js&#34;&gt;&lt;/script&gt; &lt;!-- require MetingJS --&gt;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js&#34;&gt;&lt;/script&gt;   (2)在博文中需要的位置添加以下代码
+1  &lt;meting-js auto=&#34;link&#34; list-folded=true&gt;&lt;/meting-js&gt;   上述link是你打开网易云的音乐链接，list-folded=true是在有多首歌曲时默认折叠列表
+例子 光年之外的音乐链接
+1  &lt;meting-js auto=&#34;https://music.163.com/#/song?id=449818741&#34; list-folded=true&gt;&lt;/meting-js&gt;   3.悬浮音乐播放器的设置 在此特别感谢 code show
+为实现随时播放和暂停音乐，符合阅读习惯，特寻找到悬浮播放器的设置
+（1）在你的博客主题partials文件夹中添加music.html文件
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67  &lt;!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/addmusic/" />
+<meta property="og:image" content="https://example.com/logo.png"/>
+<meta property="article:published_time" content="2020-05-17T10:40:36+08:00" />
+<meta property="article:modified_time" content="2020-05-17T10:40:36+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/logo.png"/>
+
+<meta name="twitter:title" content="LoveIt-AddMusic"/>
+<meta name="twitter:description" content="主题优化（一）：添加音乐 由于qq音乐版权维护比较严重，在此处转为使用网易云音乐
+添加音乐外链有多种方法实现
+1.进入网易云音乐网页版 实现起来比较简单,打开网易云网页版,搜索一首歌(ps:歌曲没有版权保护，可生成外链),直接把外链链接复制到博客中就可以了。
+由于此方法缺点较多，没有歌词，有很多受版权保护的歌曲无法生成外链等等，这里就不多说了，强烈建议使用第二种方法。
+2.使用Aplayer和MetingJS实现 使用平台：网易云音乐 操作简单
+(1)在博客的head.html中添加一下代码
+1 2 3 4 5 6  &lt;!-- require APlayer --&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css&#34;&gt;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js&#34;&gt;&lt;/script&gt; &lt;!-- require MetingJS --&gt;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js&#34;&gt;&lt;/script&gt;   (2)在博文中需要的位置添加以下代码
+1  &lt;meting-js auto=&#34;link&#34; list-folded=true&gt;&lt;/meting-js&gt;   上述link是你打开网易云的音乐链接，list-folded=true是在有多首歌曲时默认折叠列表
+例子 光年之外的音乐链接
+1  &lt;meting-js auto=&#34;https://music.163.com/#/song?id=449818741&#34; list-folded=true&gt;&lt;/meting-js&gt;   3.悬浮音乐播放器的设置 在此特别感谢 code show
+为实现随时播放和暂停音乐，符合阅读习惯，特寻找到悬浮播放器的设置
+（1）在你的博客主题partials文件夹中添加music.html文件
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67  &lt;!"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/addmusic/" /><link rel="prev" href="https://example.com/emoji/" /><link rel="next" href="https://example.com/addimg/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+ <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+ <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LoveIt-AddMusic",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/addmusic\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/example.com\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "music","wordcount":  370 ,
+        "url": "https:\/\/example.com\/addmusic\/","datePublished": "2020-05-17T10:40:36+08:00","dateModified": "2020-05-17T10:40:36+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/example.com\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "pipx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Pipx"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>pipx</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章"> Posts </a><a class="menu-item" href="/tags/" title="标签"> Tags </a><a class="menu-item" href="/categories/" title="分类"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Sunonx/Sunonx.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Pipx"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>pipx</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章">Posts</a><a class="menu-item" href="/tags/" title="标签">Tags</a><a class="menu-item" href="/categories/" title="分类">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Sunonx/Sunonx.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">LoveIt-AddMusic</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>pipx</a></span>&nbsp;
+                    <span class="post-category">included in<a href="/categories/loveit/">
+                                <i class="far fa-folder fa-fw"></i>LoveIt
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-05-17>2020-05-17</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>&nbsp;about 370 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 min&nbsp;<span id="/addmusic/" class="leancloud_visitors" data-flag-title="LoveIt-AddMusic">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1进入网易云音乐网页版">1.进入网易云音乐网页版</a></li>
+        <li><a href="#2使用aplayer和metingjs实现">2.使用Aplayer和MetingJS实现</a>
+          <ul>
+            <li><a href="#例子">例子</a></li>
+          </ul>
+        </li>
+        <li><a href="#3悬浮音乐播放器的设置">3.悬浮音乐播放器的设置</a>
+          <ul>
+            <li><a href="#歌曲外链寻找">歌曲外链寻找</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><meting-js auto="https://music.163.com/#/song?id=449818741" list-folded=true></meting-js></p>
+<h1 id="主题优化一添加音乐">主题优化（一）：添加音乐</h1>
+<p><code>由于qq音乐版权维护比较严重，在此处转为使用网易云音乐</code></p>
+<p>添加音乐外链有多种方法实现</p>
+<h3 id="1进入网易云音乐网页版">1.进入网易云音乐网页版</h3>
+<p>实现起来比较简单,打开<a href="https://music.163.com/" target="_blank" rel="noopener noreffer">网易云网页版</a>,搜索一首歌(ps:歌曲没有版权保护，可生成外链),直接把<code>外链</code>链接复制到博客中就可以了。</p>
+<p>由于此方法缺点较多，没有歌词，有很多受版权保护的歌曲无法生成外链等等，这里就不多说了，强烈建议使用<code>第二种</code>方法。</p>
+<h3 id="2使用aplayer和metingjs实现">2.使用Aplayer和MetingJS实现</h3>
+<p>使用平台：网易云音乐    操作简单</p>
+<p>(1)在博客的<code>head.html</code>中添加一下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"> 
+ <span class="c">&lt;!--</span> <span class="nx">require</span> <span class="nx">APlayer</span> <span class="o">--</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">&#34;stylesheet&#34;</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css&#34;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js&#34;</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="err">/</span><span class="err">s</span><span class="err">c</span><span class="err">r</span><span class="err">i</span><span class="err">p</span><span class="err">t</span><span class="err">&gt;</span><span class="err"></span>
+ <span class="c">&lt;!--</span> <span class="nx">require</span> <span class="nx">MetingJS</span> <span class="o">--</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js&#34;</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="err">/</span><span class="err">s</span><span class="err">c</span><span class="err">r</span><span class="err">i</span><span class="err">p</span><span class="err">t</span><span class="err">&gt;</span><span class="err"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p>(2)在博文中需要的位置添加以下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">meting</span><span class="o">-</span><span class="nx">js</span> <span class="nx">auto</span><span class="o">=</span><span class="s2">&#34;link&#34;</span> <span class="nx">list</span><span class="o">-</span><span class="nx">folded</span><span class="o">=</span><span class="kc">true</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="err">/</span><span class="err">m</span><span class="err">e</span><span class="err">t</span><span class="err">i</span><span class="err">n</span><span class="err">g</span><span class="err">-</span><span class="err">j</span><span class="err">s</span><span class="err">&gt;</span><span class="err"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述<code>link</code>是你打开网易云的音乐链接，<code>list-folded=true</code>是在有多首歌曲时默认折叠列表</p>
+<h4 id="例子">例子</h4>
+<p>光年之外的音乐链接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">meting</span><span class="o">-</span><span class="nx">js</span> <span class="nx">auto</span><span class="o">=</span><span class="s2">&#34;https://music.163.com/#/song?id=449818741&#34;</span> <span class="nx">list</span><span class="o">-</span><span class="nx">folded</span><span class="o">=</span><span class="kc">true</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="err">/</span><span class="err">m</span><span class="err">e</span><span class="err">t</span><span class="err">i</span><span class="err">n</span><span class="err">g</span><span class="err">-</span><span class="err">j</span><span class="err">s</span><span class="err">&gt;</span><span class="err"></span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3悬浮音乐播放器的设置">3.悬浮音乐播放器的设置</h3>
+<p><a href="https://corpython.github.io/post/hugo%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E6%9C%80%E7%BB%88%E7%AB%A0%E4%B9%8B%E6%82%AC%E6%B5%AE%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" target="_blank" rel="noopener noreffer">在此特别感谢 code show</a></p>
+<p>为实现<code>随时</code>播放和暂停音乐，符合阅读习惯，特寻找到<code>悬浮播放器</code>的设置</p>
+<p>（1）在你的博客主题<code>partials</code>文件夹中添加<code>music.html</code>文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="o">!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">require</span> <span class="nx">APlayer</span> <span class="o">--</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">&#34;stylesheet&#34;</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css&#34;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js&#34;</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="err">/</span><span class="err">s</span><span class="err">c</span><span class="err">r</span><span class="err">i</span><span class="err">p</span><span class="err">t</span><span class="err">&gt;</span><span class="err"></span>
+    <span class="c">&lt;!--</span> <span class="nx">require</span> <span class="nx">MetingJS</span> <span class="o">--</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js&#34;</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="err">/</span><span class="err">s</span><span class="err">c</span><span class="err">r</span><span class="err">i</span><span class="err">p</span><span class="err">t</span><span class="err">&gt;</span><span class="err"></span>
+<span class="o">&lt;</span><span class="err">/</span><span class="err">h</span><span class="err">e</span><span class="err">a</span><span class="err">d</span><span class="err">&gt;</span><span class="err"></span>
+
+<span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&#34;demo&#34;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&#34;player1&#34;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="err">/</span><span class="err">d</span><span class="err">i</span><span class="err">v</span><span class="err">&gt;</span><span class="err"></span>
+    <span class="o">&lt;</span><span class="err">/</span><span class="err">d</span><span class="err">i</span><span class="err">v</span><span class="err">&gt;</span><span class="err"></span>
+    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">ap</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">APlayer</span>
+            <span class="p">(</span><span class="p">{</span>
+                <span class="nx">element</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;player1&#39;</span><span class="p">)</span><span class="p">,</span>
+                <span class="nx">narrow</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="nx">fixed</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nx">autoplay</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="nx">showlrc</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nx">mini</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nx">theme</span><span class="o">:</span> <span class="s1">&#39;#FADFA3&#39;</span><span class="p">,</span>
+                <span class="nx">loop</span><span class="o">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+                <span class="nx">order</span><span class="o">:</span> <span class="s1">&#39;random&#39;</span><span class="p">,</span>
+                <span class="nx">preload</span><span class="o">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+                <span class="nx">volume</span><span class="o">:</span> <span class="mf">0.7</span><span class="p">,</span>
+                <span class="nx">mutex</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="nx">listFolded</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="nx">listMaxHeight</span><span class="o">:</span> <span class="mi">90</span><span class="p">,</span>
+                <span class="nx">lrcType</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="nx">music</span><span class="o">:</span>
+                    <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="nx">artist</span><span class="o">:</span> <span class="s1">&#39;要不要买菜&#39;</span><span class="p">,</span>
+                            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;下山&#39;</span><span class="p">,</span>
+                            <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;https://sharefs.yun.kugou.com/202001192159/203f75e19edc8d4abf66b2e7a7668422/G177/M04/18/07/8Q0DAF3VSvKAc3KNACpan3BcZnU587.mp3&#39;</span><span class="p">,</span>
+                            <span class="nx">cover</span><span class="o">:</span> <span class="s1">&#39;https://p3fx.kgimg.com/stdmusic/20191120/20191120204014790242.jpg&#39;</span><span class="p">,</span>
+                            <span class="nx">lrc</span><span class="o">:</span><span class="s2">&#34;[00:00.000] 作曲 : 朱斌语[00:01.000] 作词 : 朱斌语[00:04.39]编曲：王中易[00:12.61][00:15.16]要想练就绝世武功[00:17.15]就要忍受常人难忍受的痛[00:20.42]师傅喜欢喝的茶叫做乌龙[00:22.81]衣服爱穿中国红(嘿  师傅）[00:26.17]无论是炎夏或寒冬[00:28.68]我都很向往山门外的天空[00:31.83]还在南方等我 下山的我[00:35.00]的人叫小落[00:38.06]我左手一式太极拳[00:40.87]右手一剑刺身前[00:43.79]扫腿这招叫清雪[00:46.66]破轻功飞燕[00:49.44]我奇筋异脉力破天[00:52.41]一身正气荡人间[00:55.40]除暴安良我心愿[00:58.16]老师傅再见[01:01.77][01:13.40]要想练就绝世武功[01:15.56]就要忍受常人难忍受的痛[01:18.78]师傅喜欢喝的茶叫做乌龙[01:21.28]衣服爱穿中国红（师傅）[01:24.68]无论是炎夏或寒冬[01:27.23]我都很向往山门外的天空[01:30.23]还在南方等我 下山的我[01:33.43]的人叫小落（来）[01:36.54]我左手一式太极拳[01:39.40]右手一剑刺身前[01:42.35]扫腿这招叫清雪[01:45.13]破轻功飞燕[01:48.08]我奇筋异脉力破天[01:50.98]一身正气荡人间[01:53.98]除暴安良我心愿[01:56.76]老师傅再见[02:00.16](人法地~地法天~天法道~道法孜然 师..师傅，什么是孜然）[02:11.64]我左手一式太极拳[02:14.35]右手一剑刺身前[02:17.30]扫腿这招叫清雪[02:20.22]破轻功飞燕[02:23.11]我奇筋异脉力破天[02:26.06]一身正气荡人间[02:28.99]除暴安良我心愿[02:32.00]老师傅再见[02:35.35][02:36.32]制作人：王中易[02:37.15]混音：王宇呈[02:37.17]和声：朱斌语／涵木之／陈迪庭[02:38.16]配唱：王中易／谭佳瑶[02:39.03]统筹：谭佳瑶[02:40.04]制作公司/录音室：Hikoon Music[02:40.99]OP：嗨库文化&#34;</span><span class="p">,</span>
+                        <span class="p">}</span><span class="p">,</span><span class="p">{</span>
+                            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;悬日&#39;</span><span class="p">,</span>
+                            <span class="nx">artist</span><span class="o">:</span><span class="s1">&#39;田馥甄&#39;</span><span class="p">,</span>
+                            <span class="nx">url</span><span class="o">:</span><span class="s1">&#39;http://cdn.knowempty.xyz/%E7%94%B0%E9%A6%A5%E7%94%84%20-%20%E6%82%AC%E6%97%A5.mp3&#39;</span><span class="p">,</span>
+                            <span class="nx">cover</span><span class="o">:</span><span class="s1">&#39;http://p1.music.126.net/qX7ixB5ZT2wVJwgACuf_nA==/109951164623078367.jpg&#39;</span><span class="p">,</span>
+                            <span class="nx">lrc</span><span class="o">:</span><span class="s1">&#39;[00:00.000] 作曲 : 刘庭佐[00:01.000] 作词 : 葛大为[00:05.410]编曲 Arrangement ：柯宏升 Keke Ke、罗恩妮 Annie Lo[00:23.309]黄昏宣告着 今天已死亡[00:28.944]淡去的光阴 是我的战场[00:34.243]重遇在热络的市集[00:37.893]我很喜欢你的她[00:45.361]多配你呀[00:57.944]是真的开心 不是在作假[01:03.763]没有烟硝 互动健康[01:09.176]赶紧拿出我的手机[01:12.544]也让你看看我的他[01:19.660]不介意的话[01:25.743]落下 同一颗太阳[01:30.348]有什么特别的吗[01:38.426]你还不是一样[01:42.012]温暖却停在远方[01:49.143]对峙着不可能的爱情[01:53.561]也该像悬日那样[02:00.443]让它落下[02:24.709]她刻意放空自己[02:28.226]想留点时间让我们[02:31.461]再说说话[02:36.097]我像在愚弄自己[02:39.810]演哪出破绽百出的[02:43.112]心胸宽大[02:47.910]你不忘调侃自己[02:51.359]不够好却总是有人[02:54.913]为你牵挂[02:59.278]我又被回忆波及[03:02.879]心怎会这样不强壮[03:09.597]落下 同一颗太阳[03:14.778]有什么特别的吗[03:21.993]你还不是一样[03:26.262]温暖却停在远方[03:33.379]对峙着不可能的爱情[03:37.793]也该像悬日那样[03:44.460]让它落下[03:50.260]让它落下[03:56.111]让我放下[04:01.812]我没放下[04:07.894]我想放下[04:18.826]制作人 Producer：陈建骐 George Chen[04:19.427]木吉他 Acoustic Guitar：董运昌 Yun-Chang Dong、柯宏升 Keke Ke[04:19.943]钢琴 Piano：陈建骐 George Chen[04:20.576]和声编写 Backing Vocal Arrangement：田晓梅 Brandy[04:21.211]和声 Backing Vocal：田馥甄 Hebe Tien[04:21.811]弦乐编写和监制 Strings Arrangement and Producer：罗恩妮 Annie Lo[04:22.278]弦乐 Strings：曜爆甘音乐工作室 Just Busy Music Studio[04:22.795]第一小提琴 First Violin：蔡曜宇 Shuon Tsai[04:23.276]第二小提琴 Second Violin：陈奕勇 Yi-Yung Chen[04:23.743]中提琴 Viola：甘威鹏 Weapon Gan[04:24.175]大提琴 Cello：刘涵 Hang Liu（隐分子）[04:24.611]录音师 Recording Engineer：庄钧智 Thomas Chuang、林尚伯 Shang-Po Lin[04:25.098]录音室 Recording Studio：完美声音录音室 Perfect Sound Studio、强力录音室 Mega Force Studios[04:25.559]混音师 Mixing Engineer：林正忠 Cheng Chung Lin[04:25.944]混音录音室 Mixing Studio：白金录音室 Platinum Studio[04:26.376]ISRC：TW-EW7-20-01001&#39;</span><span class="p">,</span>
+                        <span class="p">}</span><span class="p">,</span><span class="p">{</span>
+                            <span class="nx">name</span><span class="o">:</span><span class="s2">&#34;假如爱有天意 (Live)&#34;</span><span class="p">,</span>
+                            <span class="nx">artist</span><span class="o">:</span><span class="s2">&#34;李健&#34;</span><span class="p">,</span>
+                            <span class="nx">url</span><span class="o">:</span><span class="s2">&#34;http://music.163.com/song/media/outer/url?id=31877467.mp3&#34;</span><span class="p">,</span>
+                            <span class="nx">cover</span><span class="o">:</span><span class="s2">&#34;http://p2.music.126.net/DprdNIWpRWYZJak4Q-cS-Q==/2891715582273535.jpg?param=106x106&#34;</span><span class="p">,</span>
+                            <span class="nx">lrc</span><span class="o">:</span><span class="s1">&#39;[00:30.650]当天边那颗星出现[00:36.530]你可知我又开始想念[00:41.560][00:43.250]有多少爱恋只能遥遥相望[00:49.690]就像月光洒向海面[00:54.430][00:56.710]年少的我们曾以为[01:02.710]相爱的人就能到永远[01:07.730][01:09.270]当我们相信情到深处在一起[01:15.860]听不见风中的叹息[01:20.530][01:21.910]谁知道爱是什么[01:28.930]短暂的相遇却念念不忘[01:34.000][01:34.910]用尽一生的时间[01:42.510]竟学不会遗忘[01:46.730][02:15.340]如今我们已天各一方[02:21.200]生活得像周围人一样[02:26.080][02:27.800]眼前人给我最信任的依赖[02:34.360]但愿你被温柔对待[02:38.810][02:40.340]多少恍惚的时候[02:47.410]仿佛看见你在人海川流[02:52.560][02:53.540]隐约中你已浮现[03:00.240][03:01.030]一转眼又不见[03:05.320][03:29.980]短暂的相遇却念念不忘[03:34.840][03:36.010]多少恍惚的时候[03:43.130]仿佛看见你在人海川流[03:48.460][03:49.070]隐约中你已浮现[03:56.280][04:04.020]一转眼又不见[04:08.450][04:15.170]当天边那颗星出现[04:21.200]你可知我又开始想念[04:26.400][04:28.080]有多少爱恋今生无处安放[04:34.830]冥冥中什么已改变[04:40.030][04:42.670]月光如春风拂面&#39;</span>
+                            <span class="p">}</span><span class="p">,</span>
+                            <span class="p">{</span>
+                                <span class="nx">name</span><span class="o">:</span><span class="s1">&#39;我和我的祖国&#39;</span><span class="p">,</span>
+                                <span class="nx">artist</span><span class="o">:</span><span class="s1">&#39;王菲&#39;</span><span class="p">,</span>
+                                <span class="nx">url</span><span class="o">:</span><span class="s1">&#39;http://cdn.knowempty.xyz/我和我的祖国.mp3&#39;</span><span class="p">,</span>
+                                <span class="nx">cover</span><span class="o">:</span><span class="s1">&#39;http://p2.music.126.net/HeGrAKPiZhKkONiFDxZvmw==/109951164384346866.jpg&#39;</span><span class="p">,</span>
+                                <span class="nx">lrc</span><span class="o">:</span><span class="s1">&#39;[00:00.000] 作曲 : 秦咏诚[00:01.000] 作词 : 张藜[00:26.886]我和我的祖国一刻也不能分割[00:35.486]无论我走到哪里都流出一首赞歌[00:44.196]我歌唱每一座高山我歌唱每一条河[00:53.136]袅袅炊烟小小村落路上一道辙[01:04.352]啦……[01:15.141]你用你那母亲的脉搏和我诉说[01:30.514]我的祖国和我像海和浪花一朵[01:39.463]浪是海的赤子海是那浪的依托[01:48.130]每当大海在微笑我就是笑的旋涡[01:56.663]我分担着海的忧愁分享海的欢乐[02:07.830]啦…..[02:18.896]永远给我碧浪清波心中的歌[02:29.830]啦…….[02:40.796]永远给我碧浪清波心中的歌&#39;</span>
+                            <span class="p">}</span>
+                    <span class="p">]</span>
+                    
+        <span class="p">}</span><span class="p">)</span><span class="p">;</span>
+        <span class="c1">//ap.init();
+</span><span class="c1"></span>    <span class="o">&lt;</span><span class="err">/</span><span class="err">s</span><span class="err">c</span><span class="err">r</span><span class="err">i</span><span class="err">p</span><span class="err">t</span><span class="err">&gt;</span><span class="err"></span>
+<span class="o">&lt;</span><span class="err">/</span><span class="err">b</span><span class="err">o</span><span class="err">d</span><span class="err">y</span><span class="err">&gt;</span><span class="err"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p>(2)在你的<code>single.html</code>中引入这个html文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"> <span class="p">{</span><span class="p">{</span> <span class="nx">partial</span> <span class="s2">&#34;music&#34;</span> <span class="p">.</span> <span class="p">}</span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>(3)直接在music.html中添加,歌曲的分布结构如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">music</span><span class="p">[</span>
+	<span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span><span class="s1">&#39; &#39;</span><span class="p">,</span>
+		<span class="nx">artists</span><span class="o">:</span><span class="s1">&#39; &#39;</span><span class="p">,</span>
+		<span class="nx">url</span><span class="o">:</span><span class="s1">&#39; &#39;</span><span class="p">,</span>
+		<span class="nx">cover</span><span class="o">:</span><span class="s1">&#39; &#39;</span>
+		<span class="nx">lrc</span><span class="o">:</span><span class="s1">&#39; &#39;</span><span class="p">,</span>
+	<span class="p">}</span><span class="p">,</span>
+	<span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span><span class="s1">&#39; &#39;</span><span class="p">,</span>
+		<span class="p">...</span>
+	<span class="p">}</span>
+<span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一首歌曲的信息在一对<code>{ }</code>中,其中的字段分别是<strong>歌曲名,歌手,歌曲链接,封面,歌词</strong></p>
+<p>歌词可以自己决定是否显示,将<code>showlrc: true</code>,改成<code>false</code>即可.详细的参数可参考<a href="https://aplayer.js.org/#/zh-Hans/" target="_blank" rel="noopener noreffer">官方文档</a></p>
+<h4 id="歌曲外链寻找">歌曲外链寻找</h4>
+<p>你可能会为歌曲的那几个参数为难,推荐<a href="http://www.guqiankun.com/tools/music/?source=music163" target="_blank" rel="noopener noreffer">一个网站</a></p>
+<p>将网易云网页版的歌曲链接填入即可生成歌曲外链</p>
+<center>·end·</center></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2020-05-17</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/addmusic/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://example.com/addmusic/" data-title="LoveIt-AddMusic" data-via="xxxx" data-hashtags="music"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://example.com/addmusic/" data-hashtag="music"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://example.com/addmusic/" data-title="LoveIt-AddMusic" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://example.com/addmusic/" data-title="LoveIt-AddMusic"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.12.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://example.com/addmusic/" data-title="LoveIt-AddMusic"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="https://example.com/addmusic/" data-title="LoveIt-AddMusic" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.12.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://example.com/addmusic/" data-title="LoveIt-AddMusic" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://example.com/addmusic/" data-title="LoveIt-AddMusic"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/music/">music</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/emoji/" class="prev" rel="prev" title="LoveIt-emoji"><i class="fas fa-angle-left fa-fw"></i>LoveIt-emoji</a>
+            <a href="/addimg/" class="next" rel="next" title="LoveIt-AddImage">LoveIt-AddImage<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">pipx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

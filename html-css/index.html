@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Html-Css学习笔记 - Pipx</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="Html-Css学习笔记" />
+<meta property="og:description" content="第一章 HTML&#43;CSS 优先级 ！importent &gt; 行内样式 &gt; id选择器 &gt; 类选择器 &gt; 标签选择器 &gt; 通配符 &gt; 继承 Uncategorized
+CSS三大重点 盒子模型 浮动 定位
+盒子模型 注意：
+1.当两个div上下同级相邻时，div01的外边距margin和div02的margin不会是相加而是重叠，选取距离相对大的那个
+2.div嵌套时，两个div的距离是 内边距和外边距的和，当父级div没有定义边框border和内边距时，容易被子级div带着一起下拉，边距发生合并，取大的那个，
+解决方法：
+（1）父级div定义border：1px solid white；定义为白色，但容易发生溢出
+（2）父级div加 overflow：hidden；//隐藏 其他属性：auto //增加下拉框，一般不用
+浮动   float：left、right // 脱离标准流 ，在天上飞，标准和浮动互不干扰
+  解决缝隙：
+（1）display：inline-black；但仍有一丢丢缝隙
+（2）同时定义为 float
+  子盒子在父盒子内部浮动
+  当子盒子在父盒子内部浮动，继续写标准流时，如果标准流和子盒子重叠，即父盒子height为0时
+解决方法（清除浮动）：
+（1）overflow：hidden；
+（2）额外标签：在父盒子下面随便定义一个标签，使用较少，一般不使用 eg：
+1  &lt;div style=&#34;clear : both&#34;&gt;&lt;/div&gt;   (3)额外标签升级：用CSS定义 在 父级div标签class属性后面再加一个 classfix 属性 定义的CSS样式为" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/html-css/" />
+<meta property="og:image" content="https://example.com/logo.png"/>
+<meta property="article:published_time" content="2020-05-16T16:36:04+08:00" />
+<meta property="article:modified_time" content="2020-05-16T16:36:04+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/logo.png"/>
+
+<meta name="twitter:title" content="Html-Css学习笔记"/>
+<meta name="twitter:description" content="第一章 HTML&#43;CSS 优先级 ！importent &gt; 行内样式 &gt; id选择器 &gt; 类选择器 &gt; 标签选择器 &gt; 通配符 &gt; 继承 Uncategorized
+CSS三大重点 盒子模型 浮动 定位
+盒子模型 注意：
+1.当两个div上下同级相邻时，div01的外边距margin和div02的margin不会是相加而是重叠，选取距离相对大的那个
+2.div嵌套时，两个div的距离是 内边距和外边距的和，当父级div没有定义边框border和内边距时，容易被子级div带着一起下拉，边距发生合并，取大的那个，
+解决方法：
+（1）父级div定义border：1px solid white；定义为白色，但容易发生溢出
+（2）父级div加 overflow：hidden；//隐藏 其他属性：auto //增加下拉框，一般不用
+浮动   float：left、right // 脱离标准流 ，在天上飞，标准和浮动互不干扰
+  解决缝隙：
+（1）display：inline-black；但仍有一丢丢缝隙
+（2）同时定义为 float
+  子盒子在父盒子内部浮动
+  当子盒子在父盒子内部浮动，继续写标准流时，如果标准流和子盒子重叠，即父盒子height为0时
+解决方法（清除浮动）：
+（1）overflow：hidden；
+（2）额外标签：在父盒子下面随便定义一个标签，使用较少，一般不使用 eg：
+1  &lt;div style=&#34;clear : both&#34;&gt;&lt;/div&gt;   (3)额外标签升级：用CSS定义 在 父级div标签class属性后面再加一个 classfix 属性 定义的CSS样式为"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/html-css/" /><link rel="next" href="https://example.com/git/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+ <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+ <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Html-Css学习笔记",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/html-css\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/example.com\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "hugo","wordcount":  1073 ,
+        "url": "https:\/\/example.com\/html-css\/","datePublished": "2020-05-16T16:36:04+08:00","dateModified": "2020-05-16T16:36:04+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/example.com\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "pipx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Pipx"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>pipx</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章"> Posts </a><a class="menu-item" href="/tags/" title="标签"> Tags </a><a class="menu-item" href="/categories/" title="分类"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Sunonx/Sunonx.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Pipx"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>pipx</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章">Posts</a><a class="menu-item" href="/tags/" title="标签">Tags</a><a class="menu-item" href="/categories/" title="分类">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Sunonx/Sunonx.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Html-Css学习笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>pipx</a></span>&nbsp;
+                    <span class="post-category">included in<a href="/categories/hugo/">
+                                <i class="far fa-folder fa-fw"></i>hugo
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-05-16>2020-05-16</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>&nbsp;about 1073 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;6 min&nbsp;<span id="/html-css/" class="leancloud_visitors" data-flag-title="Html-Css学习笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#优先级">优先级</a></li>
+    <li><a href="#css三大重点">CSS三大重点</a>
+      <ul>
+        <li><a href="#盒子模型">盒子模型</a></li>
+        <li><a href="#浮动">浮动</a></li>
+      </ul>
+    </li>
+    <li><a href="#css元素属性">CSS元素属性</a>
+      <ul>
+        <li><a href="#定位position">定位（position）</a></li>
+        <li><a href="#待解决问题导航栏固定问题">待解决问题：导航栏固定问题？</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1基本语法">1.基本语法</a></li>
+        <li><a href="#2数据类型和变量">2.数据类型和变量</a></li>
+        <li><a href="#3字符串">3.字符串</a></li>
+        <li><a href="#4数组">4.数组</a>
+          <ul>
+            <li><a href="#1indexof">1.indexOf</a></li>
+            <li><a href="#2slice">2.slice</a></li>
+            <li><a href="#3push和pop">3.push和pop</a></li>
+            <li><a href="#4sort">4.sort</a></li>
+            <li><a href="#5reverse">5.reverse</a></li>
+            <li><a href="#6splice">6.splice</a></li>
+            <li><a href="#7concat">7.concat</a></li>
+            <li><a href="#8in">8.in</a></li>
+            <li><a href="#9for--in------">9.for &hellip; in     * ***</a></li>
+            <li><a href="#10map和-set">10,Map和 set</a></li>
+            <li><a href="#11iterable">11.iterable</a></li>
+          </ul>
+        </li>
+        <li><a href="#5函数">5.函数</a>
+          <ul>
+            <li><a href="#1函数定义两种形式">1.函数定义两种形式</a></li>
+            <li><a href="#2arguments">2.arguments</a></li>
+            <li><a href="#3rest">3.rest</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="第一章--htmlcss">第一章  HTML+CSS</h1>
+<h2 id="优先级">优先级</h2>
+<p><strong>！importent   &gt;  行内样式    &gt;  id选择器  &gt;  类选择器 &gt;  标签选择器  &gt;  通配符  &gt;   继承</strong>  Uncategorized</p>
+<h2 id="css三大重点">CSS三大重点</h2>
+<p>盒子模型     浮动     定位</p>
+<h3 id="盒子模型"><strong>盒子模型</strong></h3>
+<p><em>注意：</em></p>
+<p>1.当两个div<em><strong>上下同级相邻</strong></em>时，div01的外边距margin和div02的margin不会是相加而是重叠，选取<strong>距离相对大</strong>的那个</p>
+<p>2.div<em><strong>嵌套</strong></em>时，两个div的距离是 内边距和外边距的和，当父级div<strong>没有定义边框border和内边距</strong>时，容易被子级div带着一起下拉，边距发生合并，取大的那个，</p>
+<p><em>解决方法：</em></p>
+<p>（1）父级div定义border：<strong>1px  solid   white</strong>；定义为白色，但<strong>容易发生溢出</strong></p>
+<p>（2）父级div加  <strong>overflow：hidden</strong>；//隐藏     其他属性：<strong>auto</strong>  //增加下拉框，一般不用</p>
+<h3 id="浮动"><strong>浮动</strong></h3>
+<ul>
+<li>
+<p><i class="far fa-square fa-fw"></i>float：left、right   // 脱离标准流 ，在天上飞，标准和浮动互不干扰</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw"></i>解决缝隙：</p>
+<p>（1）display：inline-black；但仍有一丢丢缝隙</p>
+<p>（2）同时定义为 float</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw"></i>子盒子在父盒子内部浮动</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw"></i>当子盒子在父盒子内部浮动，继续写标准流时，如果标准流和子盒子重叠，即父盒子height为0时</p>
+<p>解决方法（<strong>清除浮动</strong>）：</p>
+<p>（1）overflow：hidden；</p>
+<p>（2）额外标签：在父盒子下面随便定义一个标签，使用较少，一般不使用         eg：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;div  style=&#34;clear : both&#34;&gt;&lt;/div&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>(3)额外标签升级：用CSS定义   在 父级div标签class属性后面再加一个  classfix  属性  定义的CSS样式为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;div class=&#34;div clearfix&#34;&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;
+  
+.clearfix:after{ content:&#34;&#34;;display: block;height: 0px;clear: both;visibility: hidden;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="css元素属性">CSS元素属性</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">display: inline-block;标准流变成横向排列方式
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="定位position">定位（position）</h3>
+<p>static（静态定位，默认）     <strong>绝对定位（<strong>absolute</strong>）      相对定位（<strong>relative</strong>）       固定定位</strong>（fixed）</p>
+<p>absolute：相对于浏览器 ，不占空间         relative：相对于子盒子在父盒子中原来应该在的位置，占空间</p>
+<p>1.父盒子未定位。子盒子绝对定位相对于浏览器，</p>
+<p>2.父盒子定位（绝对，相对都可），子盒子绝对定位相对于父盒子上原本的位置</p>
+<p>3.一般父盒子相对定位（relative）&mdash;&mdash;占空间，子盒子绝对定位（absolute）&mdash;不占空间，脱标</p>
+<p>4.固定定位（fixed）：网页的导航栏，或者恶心的广告，相对于浏览器固定不动的位置</p>
+<h3 id="待解决问题导航栏固定问题">待解决问题：导航栏固定问题？</h3>
+<h1 id="第二章---javascript">第二章   JavaScript</h1>
+<h3 id="1基本语法">1.基本语法</h3>
+<p>1.引用其他js文件时，内部定义的内容无效，且前面报错，后面不执行，type=&quot;text/javascript&rdquo;  可写可不写，区分大小写</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var age=29; 
+var nextAge=30;
+var max=(age&gt;nextAge)?age:nextAge;   //最大值的表达方式
+console.log(max);
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">console.log(1&lt;&lt;3);   //左移 = 1*（2^3） 二进制的移动  速率快，但一般不用
+console.log(29&lt;&lt;3);   //右移 =29/(2^3)  结果精度缺失
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2数据类型和变量">2.数据类型和变量</h3>
+<p>argument //数组</p>
+<p>第一种是<code>==</code>比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果；</p>
+<p><strong>第二种是<code>===</code>比较，它不会自动转换数据类型，如果数据类型不一致，返回<code>false</code>，如果一致，再比较。</strong></p>
+<p>由于JavaScript这个设计缺陷，<em>不要</em>使用<code>==</code>比较，<strong>始终坚持使用<code>===</code>比较。</strong></p>
+<p>另一个例外是<strong><code>NaN</code>这个特殊的Number与所有其他值都不相等，包括它自己</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">NaN === NaN; // false
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>唯一能判断<code>NaN</code>的方法是通过<code>isNaN()</code>函数：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">isNaN(NaN); // true
+</code></pre></td></tr></table>
+</div>
+</div><p>最后要注意浮点数的相等比较：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">1 / 3 === (1 - 2 / 3); // false
+</code></pre></td></tr></table>
+</div>
+</div><p>这不是JavaScript的设计缺陷。**浮点数在运算过程中会产生误差，**因为<em>计算机无法精确表示无限循环小数</em>。要比较两个浮点数是否相等，只能计算它们之差的绝对值，看是否小于某个阈值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Math.abs(1 / 3 - (1 - 2 / 3)) &lt; 0.0000001; // true
+</code></pre></td></tr></table>
+</div>
+</div><p>null表示空，大多数情况下，我们都应该用<code>null</code>。<code>undefined</code>表示未定义，仅仅在判断函数参数是否传递的情况下有用。</p>
+<p>创建数组的方法</p>
+<p>1.[ ]     2.  是通过<code>Array()</code>函数实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">new Array(1, 2, 3); // 创建了数组[1, 2, 3]
+</code></pre></td></tr></table>
+</div>
+</div><p>然而，<strong>出于代码的可读性考虑，强烈建议直接使用<code>[]</code>。</strong></p>
+<p>JavaScript对象的<strong>键都是字符串类型，值可以是任意数据类型</strong></p>
+<p>注意变量只能用<code>var</code>申明一次 。</p>
+<h3 id="3字符串">3.字符串</h3>
+<p>转义字符<code>\</code>可以转义很多字符，比如<code>\n</code>表示换行，<code>\t</code>表示制表符，字符<code>\</code>本身也要转义，所以<code>\\</code>表示的字符就是<code>\</code>。</p>
+<p>ASCII字符可以以<code>\x##</code>形式的十六进制表示，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#39;\x41&#39;; // 完全等同于 &#39;A&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>还可以用<code>\u####</code>表示一个Unicode字符：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#39;\u4e2d\u6587&#39;; // 完全等同于 &#39;中文&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>由于多行字符串用<code>\n</code>写起来比较费事，所以最新的ES6标准新增了一种<strong>多行字符串</strong>的表示方法，用<strong>反引号 ** &hellip; *</strong>* 表示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">`这是一个
+多行
+字符串`; //ESC下面那个   
+</code></pre></td></tr></table>
+</div>
+</div><p>如果有很多变量需要连接，用<code>+</code>号就比较麻烦。ES6新增了一种模板字符串，表示方法和上面的多行字符串一样，但是它会自动替换字符串中的变量：  <strong>${  }</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var name = &#39;小明&#39;;
+var age = 20;
+var message = `你好, ${name}, 你今年${age}岁了!`;
+alert(message);
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4数组">4.数组</h3>
+<h4 id="1indexof">1.<strong>indexOf</strong></h4>
+<p>与String类似，<code>Array</code>也可以通过<code>indexOf()</code>来搜索一个指定的元素的位置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var arr = [10, 20, &#39;30&#39;, &#39;xyz&#39;];
+arr.indexOf(10); // 元素10的索引为0
+arr.indexOf(20); // 元素20的索引为1
+arr.indexOf(30); // 元素30没有找到，返回-1  ********
+arr.indexOf(&#39;30&#39;); // 元素&#39;30&#39;的索引为2
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="2slice">2.slice</h4>
+<p>截取<code>Array</code>的部分元素，然后返回一个新的<code>Array</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var arr = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;];
+arr.slice(0, 3); // 从索引0开始，到索引3结束，但不包括索引3: [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]
+arr.slice(3); // 从索引3开始到结束: [&#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;]
+</code></pre></td></tr></table>
+</div>
+</div><p>注意到<code>slice()</code>的起止参数包括开始索引，不包括结束索引。</p>
+<p>如果不给<code>slice()</code>传递任何参数，它就会从头到尾截取所有元素。利用这一点，我们可以很容易地复制一个<code>Array</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var arr = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;];
+var aCopy = arr.slice();
+aCopy; // [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;]
+aCopy === arr; // false
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="3push和pop">3.push和pop</h4>
+<p>对应  <strong>unshift</strong>  （数组前面加元素）和<strong>shift</strong>（数组前面删元素）</p>
+<p><code>push()</code>向<code>Array</code>的末尾添加若干元素，<code>pop()</code>则把<code>Array</code>的最后一个元素删除掉：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var arr = [1, 2];
+arr.push(&#39;A&#39;, &#39;B&#39;); // 返回Array新的长度: 4
+arr; // [1, 2, &#39;A&#39;, &#39;B&#39;]
+arr.pop(); // pop()返回&#39;B&#39;
+arr; // [1, 2, &#39;A&#39;]
+arr.pop(); arr.pop(); arr.pop(); // 连续pop 3次
+arr; // []
+arr.pop(); // 空数组继续pop不会报错，而是返回undefined
+arr; // []
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">arr.shift(); // 空数组继续shift不会报错，而是返回undefined
+arr; // []
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="4sort">4.sort</h4>
+<p><code>sort()</code>可以对当前<code>Array</code>进行排序，它会直接修改当前<code>Array</code>的元素位置，直接调用时，按照默认顺序排序：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var arr = [&#39;B&#39;, &#39;C&#39;, &#39;A&#39;];
+arr.sort();
+arr; // [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="5reverse"><strong>5.reverse</strong></h4>
+<p><strong>反转</strong></p>
+<h4 id="6splice">6.splice</h4>
+<p><code>splice()</code>方法是修改<code>Array</code>的“万能方法”，它可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var arr = [&#39;Microsoft&#39;, &#39;Apple&#39;, &#39;Yahoo&#39;, &#39;AOL&#39;, &#39;Excite&#39;, &#39;Oracle&#39;];
+// 从索引2开始删除3个元素,然后再添加两个元素:
+arr.splice(2, 3, &#39;Google&#39;, &#39;Facebook&#39;); // 返回删除的元素 [&#39;Yahoo&#39;, &#39;AOL&#39;, &#39;Excite&#39;]
+arr; // [&#39;Microsoft&#39;, &#39;Apple&#39;, &#39;Google&#39;, &#39;Facebook&#39;, &#39;Oracle&#39;]
+// 只删除,不添加:
+arr.splice(2, 2); // [&#39;Google&#39;, &#39;Facebook&#39;]
+arr; // [&#39;Microsoft&#39;, &#39;Apple&#39;, &#39;Oracle&#39;]
+// 只添加,不删除:
+arr.splice(2, 0, &#39;Google&#39;, &#39;Facebook&#39;); // 返回[],因为没有删除任何元素
+arr; // [&#39;Microsoft&#39;, &#39;Apple&#39;, &#39;Google&#39;, &#39;Facebook&#39;, &#39;Oracle&#39;]
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="7concat">7.concat</h4>
+<p>连接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var arr = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;];
+var added = arr.concat([1, 2, 3]);
+added; // [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, 1, 2, 3]
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="8in">8.in</h4>
+<p>如果我们要检测<code>xiaoming</code>是否拥有某一属性，可以用<code>**in</code>操作符**：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var xiaoming = {
+    name: &#39;小明&#39;,
+    birth: 1990,
+    school: &#39;No.1 Middle School&#39;,
+    height: 1.70,
+    weight: 65,
+    score: null
+};
+&#39;name&#39; in xiaoming; // true
+&#39;grade&#39; in xiaoming; // false
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>不过要小心，如果<code>in</code>判断一个属性存在，这个属性不一定是<code>xiaoming</code>的，它可能是<code>xiaoming</code>继承得到的：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#39;toString&#39; in xiaoming; // true
+</code></pre></td></tr></table>
+</div>
+</div><p>因为<code>toString</code>定义在<code>object</code>对象中，而所有对象最终都会在原型链上指向<code>object</code>，所以<code>xiaoming</code>也拥有<code>toString</code>属性。</p>
+<p>要判断一个属性是否是<code>xiaoming</code><strong>自身拥有</strong>的，而不是继承得到的，可以用<strong><code>hasOwnProperty()</code>方法</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var xiaoming = {
+    name: &#39;小明&#39;
+};
+xiaoming.hasOwnProperty(&#39;name&#39;); // true
+xiaoming.hasOwnProperty(&#39;toString&#39;); // false
+</code></pre></td></tr></table>
+</div>
+</div><p>注意 ，<strong>遍历时只能用  xiaoming.[i]   不能用 xiaoming . i  (输出的是i的属性，undefined)</strong></p>
+<p>JavaScript把<strong><code>null</code>、<code>undefined</code>、<code>0</code>、<code>NaN</code></strong>和<strong>空字符串<code>''</code>视为<code>false</code></strong>，其他值一概视为<code>true</code></p>
+<h4 id="9for--in------">9.for &hellip; in     * ***</h4>
+<p><code>for</code>循环的一个变体是<code>for ... in</code>循环，它可以把一个对象的所有属性依次循环出来：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var o = {
+    name: &#39;Jack&#39;,
+    age: 20,
+    city: &#39;Beijing&#39;
+};
+for (var key in o) {
+    console.log(key); // &#39;name&#39;, &#39;age&#39;, &#39;city&#39;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>要过滤掉对象继承的属性，用<code>hasOwnProperty()</code>来实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var o = {
+    name: &#39;Jack&#39;,
+    age: 20,
+    city: &#39;Beijing&#39;
+};
+for (var key in o) {
+    if (o.hasOwnProperty(key)) {
+        console.log(key); // &#39;name&#39;, &#39;age&#39;, &#39;city&#39;
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>由于<code>Array</code>也是对象，而它的每个元素的索引被视为对象的属性，因此，<code>for ... in</code>循环可以直接循环出<code>Array</code>的索引：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var a = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;];
+for (var i in a) {
+    console.log(i); // &#39;0&#39;, &#39;1&#39;, &#39;2&#39;
+    console.log(a[i]); // &#39;A&#39;, &#39;B&#39;, &#39;C&#39;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><em>请注意</em>，**<code>for ... in</code>对<code>Array</code>的循环得到的是<code>String</code>而不是<code>Number</code>。</p>
+<h4 id="10map和-set">10,Map和 set</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var m = new Map([[&#39;Michael&#39;, 95], [&#39;Bob&#39;, 75], [&#39;Tracy&#39;, 85]]);
+var s2 = new Set([1, 2, 3]); // 含1, 2, 3
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="11iterable">11.iterable</h4>
+<p>ES6标准引入了新的<code>iterable</code>类型，<code>Array</code>、<code>Map</code>和<code>Set</code>都属于<code>iterable</code>类型。</p>
+<p>具有<code>iterable</code>类型的集合可以通过新的<code>for ... of</code>循环来遍历。</p>
+<p>是直接使用<code>iterable</code>内置的<strong><code>forEach</code>方法</strong>，它接收一个函数，每次迭代就自动回调该函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var a = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;];
+a.forEach(function (element, index, array) {
+    // element: 指向当前元素的值
+    // index: 指向当前索引
+    // array: 指向Array对象本身
+    console.log(element + &#39;, index = &#39; + index);
+});
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>for in 循环的是对象的属性 ; for of 循环的是迭代器中的每一个元素</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"> var m = new Map();
+	m.hehe = &#34;haha&#34;;
+	m.set(&#34;name&#34;,&#34;wangjie&#34;);
+	m.set(&#34;hehe&#34;,&#34;dada&#34;);
+	m.set(&#34;hoho&#34;,&#34;lolo&#34;);
+	for(var element in m){
+		console.log(element); // hehe
+	}
+
+	for(var element of m){
+		console.log(element); //[&#34;name&#34;, &#34;wangjie&#34;] [&#34;hehe&#34;, &#34;dada&#34;] [&#34;hoho&#34;, &#34;lolo&#34;]
+	}
+</code></pre></td></tr></table>
+</div>
+</div><p>forEach中的function中的参数是和位置相关的，第一个参数就是表示array的元素，不能用作其他用途表示。</p>
+<h3 id="5函数">5.函数</h3>
+<p>函数体内部的语句在执行时，一旦执行到<code>return</code>时，函数就执行完毕，并将结果返回。因此，函数内部通过条件判断和循环可以实现非常复杂的逻辑。</p>
+<p>如果没有<code>return</code>语句，函数执行完毕后也会返回结果，只是<strong>结果为<code>undefined</code></strong>。</p>
+<h4 id="1函数定义两种形式"><strong>1.函数定义两种形式</strong></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">function abs(x) {
+    if (x &gt;= 0) {
+        return x;
+    } else {
+        return -x;
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意第二种方式按照完整语法需要在函数体末尾加一个<code>;</code>，表示赋值语句结束。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var abs = function (x) {
+    if (x &gt;= 0) {
+        return x;
+    } else {
+        return -x;
+    }
+};  //注意 
+</code></pre></td></tr></table>
+</div>
+</div><p>传入的参数比定义的多或少都没有问题，少的话：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">abs(); // 返回NaN
+</code></pre></td></tr></table>
+</div>
+</div><p>此时<code>abs(x)</code>函数的参数<code>x</code><strong>将收到<code>undefined</code>，计算结果为<code>NaN</code></strong>。</p>
+<p>要避免收到<code>undefined</code>，可以对参数进行检查：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">function abs(x) {
+    if (typeof x !== &#39;number&#39;) {          //先判断一下类型
+        throw &#39;Not a number&#39;;
+    }
+    if (x &gt;= 0) {
+        return x;
+    } else {
+        return -x;
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="2arguments">2.<code>arguments</code></h4>
+<p>它只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数  //<strong>需要好好理解</strong></p>
+<p>可以获得调用者传入的所有参数。也就是说，即使函数不定义任何参数，还是可以拿到参数的值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">function foo(x) {
+    console.log(&#39;x = &#39; + x); // 10
+    for (var i=0; i&lt;arguments.length; i++) {
+        console.log(&#39;arg &#39; + i + &#39; = &#39; + arguments[i]); // 10, 20, 30
+    }
+}
+foo(10, 20, 30);
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>实际上<code>arguments</code>最常用于判断传入参数的个数</strong>。你可能会看到这样的写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">// foo(a[, b], c)
+// 接收2~3个参数，b是可选参数，如果只传2个参数，b默认为null：
+function foo(a, b, c) {
+    if (arguments.length === 2) {
+        // 实际拿到的参数是a和b，c为undefined
+        c = b; // 把b赋给c
+        b = null; // b变为默认值
+    }
+    // ...
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>要把中间的参数<code>b</code>变为“可选”参数，就只能通过<code>arguments</code>判断，然后重新调整参数并赋值。</p>
+<h4 id="3rest">3.rest</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">function foo(a, b, ...rest) {
+    console.log(&#39;a = &#39; + a);
+    console.log(&#39;b = &#39; + b);
+    console.log(rest);
+}
+
+foo(1, 2, 3, 4, 5);
+// 结果:
+// a = 1
+// b = 2
+// Array [ 3, 4, 5 ]
+
+foo(1);
+// 结果:
+// a = 1
+// b = undefined
+// Array []
+</code></pre></td></tr></table>
+</div>
+</div><p>rest参数只能写在最后，前面用<strong><code>...</code>标识</strong>，从运行结果可知，传入的参数先绑定<code>a</code>、<code>b</code>，多余的参数以数组形式交给变量<code>rest</code>，所以，不再需要<code>arguments</code>我们就获取了全部参数。</p>
+<p>如果传入的参数连正常定义的参数都没填满，也不要紧，rest参数会接收一个<strong>空数组</strong>（注意不是<code>undefined</code>）。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2020-05-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/html-css/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://example.com/html-css/" data-title="Html-Css学习笔记" data-via="xxxx" data-hashtags="hugo"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://example.com/html-css/" data-hashtag="hugo"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://example.com/html-css/" data-title="Html-Css学习笔记" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://example.com/html-css/" data-title="Html-Css学习笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.12.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://example.com/html-css/" data-title="Html-Css学习笔记"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="https://example.com/html-css/" data-title="Html-Css学习笔记" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.12.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://example.com/html-css/" data-title="Html-Css学习笔记" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://example.com/html-css/" data-title="Html-Css学习笔记"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hugo/">hugo</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/git/" class="next" rel="next" title="Git版本控制问题集锦">Git版本控制问题集锦<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">pipx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>hugo - Category - Pipx</title>
+        <link>https://example.com/categories/hugo/</link>
+        <description>hugo - Category - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 May 2020 16:36:04 &#43;0800</lastBuildDate><atom:link href="https://example.com/categories/hugo/" rel="self" type="application/rss+xml" /><item>
+    <title>Html-Css学习笔记</title>
+    <link>https://example.com/html-css/</link>
+    <pubDate>Sat, 16 May 2020 16:36:04 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/html-css/</guid>
+    <description><![CDATA[第一章 HTML+CSS 优先级 ！importent &gt; 行内样式 &gt; id选择器 &gt; 类选择器 &gt; 标签选择器 &gt; 通配符 &gt; 继承 Uncategorized
+CSS三大重点 盒子模型 浮动 定位
+盒子模型 注意：
+1.当两个div上下同级相邻时，div01的外边距margin和div02的margin不会是相加而是重叠，选取距离相对大的那个
+2.div嵌套时，两个div的距离是 内边距和外边距的和，当父级div没有定义边框border和内边距时，容易被子级div带着一起下拉，边距发生合并，取大的那个，
+解决方法：
+（1）父级div定义border：1px solid white；定义为白色，但容易发生溢出
+（2）父级div加 overflow：hidden；//隐藏 其他属性：auto //增加下拉框，一般不用
+浮动   float：left、right // 脱离标准流 ，在天上飞，标准和浮动互不干扰
+  解决缝隙：
+（1）display：inline-black；但仍有一丢丢缝隙
+（2）同时定义为 float
+  子盒子在父盒子内部浮动
+  当子盒子在父盒子内部浮动，继续写标准流时，如果标准流和子盒子重叠，即父盒子height为0时
+解决方法（清除浮动）：
+（1）overflow：hidden；
+（2）额外标签：在父盒子下面随便定义一个标签，使用较少，一般不使用 eg：
+1  &lt;div style=&#34;clear : both&#34;&gt;&lt;/div&gt;   (3)额外标签升级：用CSS定义 在 父级div标签class属性后面再加一个 classfix 属性 定义的CSS样式为]]></description>
+</item></channel>
+</rss>

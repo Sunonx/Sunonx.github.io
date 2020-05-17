@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>windows - Category - Pipx</title>
+        <link>https://example.com/categories/windows/</link>
+        <description>windows - Category - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 May 2020 22:25:36 &#43;0800</lastBuildDate><atom:link href="https://example.com/categories/windows/" rel="self" type="application/rss+xml" /><item>
+    <title>Windows下的网络命令</title>
+    <link>https://example.com/windows-ip/</link>
+    <pubDate>Sat, 16 May 2020 22:25:36 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/windows-ip/</guid>
+    <description><![CDATA[Windows下
+ftp://192.168.0.9
+ipconfig
+nslookup
+set q=mx //查询邮件服务器
+set q=ns //查询dns服务器
+set q=a //查询服务器地址
+netstat -r //查看本地路由表 rout print
+netstat -na //查看本地连接和开放的端口
+netsh firewall //防火墙设置
+set
+net //本地详细设置
+net user add ？ //查询本地开放得端口
+nbtstat //显示协议和TCP/IP连接]]></description>
+</item></channel>
+</rss>

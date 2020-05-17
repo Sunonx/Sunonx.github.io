@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>video - Tag - Pipx</title>
+        <link>https://example.com/tags/video/</link>
+        <description>video - Tag - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 17 May 2020 11:51:36 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/video/" rel="self" type="application/rss+xml" /><item>
+    <title>LoveIt-AddVideo</title>
+    <link>https://example.com/addvideo/</link>
+    <pubDate>Sun, 17 May 2020 11:51:36 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/addvideo/</guid>
+    <description><![CDATA[主题优化（二）：添加视频 在博文中插入保持宽高比的iframe视频
+问题描述： 视频无法根据页面宽度自动调整宽高比，导致视频在手机这种小屏幕上会出现上下黑边。
+解决方案： 这个问题可以使用CSS来解决。最简单的方式就是将视频的iframe放在一个保持宽高比的div中（代码源自此处）：
+(1)打开~\themes\主题名\assets\css，在—_custom.scss中添加
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  /* 这个规则规定了iframe父元素容器的尺寸，16:9的近似值为56%*/ .selfadapting-video { position: relative;width: 100%;height: 0;padding-bottom: 56%; /* 高度应该是宽度的56% */} /* 设定iframe的宽度和高度，让iframe占满整个父元素容器 */.selfadapting-video iframe { position: absolute;width: 100%;height: 100%;left: 0;top: 0;}  (2)删去iframe中关于高度和宽度的设定，将其添加到 &lt;div class=&quot;selfadapting-video-bilibili&quot;&gt; ... &lt;/div&gt;之中：
+1 2 3  &lt;div class=&#34;selfadapting-video&#34;&gt;&lt;iframe src=&#39;https://player.]]></description>
+</item></channel>
+</rss>

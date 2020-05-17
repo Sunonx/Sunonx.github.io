@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>you - Tag - Pipx</title>
+        <link>https://example.com/tags/you/</link>
+        <description>you - Tag - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 May 2020 22:17:39 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/you/" rel="self" type="application/rss+xml" /><item>
+    <title>MU</title>
+    <link>https://example.com/mu/</link>
+    <pubDate>Sat, 16 May 2020 22:17:39 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/mu/</guid>
+    <description><![CDATA[😄我一直很喜欢魔法的世界，因为它能让我实现很多我在现实中未能实现的事情，会有另外一种不同的乐趣。就像你喜欢漫威的英雄世界一样，每个人心中可能都住着一个英雄。
+😢可我没有哆啦A梦的魔法口袋，也不是魔法少女百变小樱，更去不了霍格沃茨魔法学校，没有哈利波特的魔法杖。
+😊生活很残酷，但你远比想象中强大。加油，明天会是新的白昼。
+😘只有两个人互相想念的时候，相遇才有意义。]]></description>
+</item></channel>
+</rss>
