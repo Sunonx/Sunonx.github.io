@@ -31,16 +31,18 @@
 (2)删去iframe中关于高度和宽度的设定，将其添加到 `<div class="selfadapting-video-bilibili"> ... </div>`之中：
 ```javascript
 <div class="selfadapting-video">
-<iframe src='https://player.youku.com/embed/XNDU5NTkzNjQ4MA=='  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="max-width: 100%"></iframe>
+<iframe src='https://player.youku.com/embed/XMjk4NzA1OTMzNg=='  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="max-width: 100%"></iframe>
 </div>
 ```
+
 
 ##### 对于优酷、Youtube这种，这个CSS已经可以用了，但是我常用的B站的iframe有一个特殊的机制：
 
 
 <div class="selfadapting-video">
-<iframe src='https://player.youku.com/embed/XNDU5NTkzNjQ4MA=='  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="max-width: 100%"></iframe>
+<iframe src='https://player.youku.com/embed/XNDA4ODQ5OTcxNg=='  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="max-width: 100%"></iframe>
 </div>
+
 
 ##### 对于B站
 哈哈，开心的是，该主题[LoveIt]()已经内置好了`shortcodes`模板，可直接使用

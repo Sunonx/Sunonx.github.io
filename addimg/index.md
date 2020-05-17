@@ -6,7 +6,7 @@
 看这里——>[参考此篇文档](https://github.com/tbiering/hugo-slider-shortcode)
 
 ###### 例子如下(My DesktopImages)
-{{< gallery-slider  dir ="/images/001img" width ="695.333px" height =" 350px" auto-slide ="2000" >}}
+{{< gallery-slider  dir ="/images/001img" >}}   <!-- width ="695.333px" height =" 350px"   auto-slide ="2000"  //自动播放速度 -->
 
 #### 3.实现类似MacOS的漂亮终端
 
