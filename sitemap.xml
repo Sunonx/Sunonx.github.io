@@ -29,8 +29,8 @@
             <loc>https://example.com/tags/ping/</loc><lastmod>2020-05-16T22:25:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/tags/shell/</loc><lastmod>2020-05-16T22:25:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/the-use-of-shell/</loc><lastmod>2020-05-16T22:25:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://example.com/tags/windows/</loc><lastmod>2020-05-16T22:25:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/categories/windows/</loc><lastmod>2020-05-16T22:25:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://example.com/tags/windows/</loc><lastmod>2020-05-16T22:25:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/windows-ip/</loc><lastmod>2020-05-16T22:25:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/mu/</loc><lastmod>2020-05-16T22:17:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/tags/you/</loc><lastmod>2020-05-16T22:17:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -39,15 +39,15 @@
             <loc>https://example.com/tags/%E6%96%B0%E5%86%A0%E7%97%85%E6%AF%92/</loc><lastmod>2020-05-16T22:07:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/tags/vlan/</loc><lastmod>2020-05-16T21:47:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/vlan/</loc><lastmod>2020-05-16T21:47:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://example.com/tags/english/</loc><lastmod>2020-05-16T21:36:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/categories/english/</loc><lastmod>2020-05-16T21:36:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://example.com/tags/english/</loc><lastmod>2020-05-16T21:36:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/english-01/</loc><lastmod>2020-05-16T21:36:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/english-02/</loc><lastmod>2020-05-16T21:36:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/tags/web/</loc><lastmod>2020-05-16T20:47:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/categories/%E5%89%8D%E7%AB%AF/</loc><lastmod>2020-05-16T20:47:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/web-rode/</loc><lastmod>2020-05-16T20:47:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://example.com/categories/git/</loc><lastmod>2020-05-16T18:51:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/tags/git/</loc><lastmod>2020-05-16T18:51:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://example.com/categories/git/</loc><lastmod>2020-05-16T18:51:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/git/</loc><lastmod>2020-05-16T18:51:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/html-css/</loc><lastmod>2020-05-16T16:36:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/tags/hugo/</loc><lastmod>2020-05-16T16:36:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
