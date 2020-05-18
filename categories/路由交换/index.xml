@@ -3,7 +3,26 @@
         <title>路由交换 - Category - Pipx</title>
         <link>https://example.com/categories/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/</link>
         <description>路由交换 - Category - Pipx</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 May 2020 21:47:00 &#43;0800</lastBuildDate><atom:link href="https://example.com/categories/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 18 May 2020 15:05:35 &#43;0800</lastBuildDate><atom:link href="https://example.com/categories/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/" rel="self" type="application/rss+xml" /><item>
+    <title>Routing Exange Review</title>
+    <link>https://example.com/router/</link>
+    <pubDate>Mon, 18 May 2020 15:05:35 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/router/</guid>
+    <description><![CDATA[前言 基本概述：
+-指导教师：刘云生
+ 学习时间：2020.3.14-2020.5.20 教学内容：CCNA CCNP 考核内容：教材，CCNA题库(640-802) 考核题型：选择、填空、简答、综合配置 考试时间：2020.8.8&mdash;&amp; 参考教材：   -《路由交换技术》 清华大学出版社 吴建胜等
+ -《TCP/IP路由技术》 人民邮电出版社 葛健立等
+ -《 TCP/IP详解》
+C0 review OSI模型  7.应用层  应用层（Application Layer）提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如: HTTP、HTTPS、FTP、TELNET、SSH、SMTP、POP3、HTML等。
+ 6.表达层  表达层（Presentation Layer）把数据转换为能与接收者的系统格式兼容并适合传输的格式。
+ 5.会话层  会话层（Session Layer）负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接。
+ 4.传输层  传输层（Transport Layer）把传输表头（TH）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如:传输控制协议（TCP）等。
+ 3.网络层  网络层（Network Layer）决定数据的路径选择和转寄，将网络表头（NH）加至数据包，以形成报文。网络表头包含了网络数据。例如:互联网协议（IP）等。
+ 2.数据链路层  数据链路层（Data Link Layer）负责网络寻址、错误侦测和改错。当表头和表尾被加至数据包时，会形成信息框（Data Frame）。数据链表头（DLH）是包含了物理地址和错误侦测及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如以太网、无线局域网（Wi-Fi）和通用分组无线服务（GPRS）等。
+分为两个子层：逻辑链路控制（logical link control，LLC）子层和介质访问控制（Media access control，MAC）子层。
+ 1.物理层  物理层（Physical Layer）在局部局域网上传送数据帧（Data Frame），它负责管理电脑通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机接口卡等。]]></description>
+</item><item>
     <title>Vlan的划分</title>
     <link>https://example.com/vlan/</link>
     <pubDate>Sat, 16 May 2020 21:47:00 &#43;0800</pubDate>

@@ -1,9 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>ip - Tag - Pipx</title>
-        <link>https://example.com/tags/ip/</link>
-        <description>ip - Tag - Pipx</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 18 May 2020 15:05:35 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/ip/" rel="self" type="application/rss+xml" /><item>
+        <title>Router - Tag - Pipx</title>
+        <link>https://example.com/tags/router/</link>
+        <description>Router - Tag - Pipx</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 18 May 2020 15:05:35 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/router/" rel="self" type="application/rss+xml" /><item>
     <title>Routing Exange Review</title>
     <link>https://example.com/router/</link>
     <pubDate>Mon, 18 May 2020 15:05:35 &#43;0800</pubDate>
@@ -22,25 +22,5 @@ C0 review OSI模型  7.应用层  应用层（Application Layer）提供为应�
  2.数据链路层  数据链路层（Data Link Layer）负责网络寻址、错误侦测和改错。当表头和表尾被加至数据包时，会形成信息框（Data Frame）。数据链表头（DLH）是包含了物理地址和错误侦测及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如以太网、无线局域网（Wi-Fi）和通用分组无线服务（GPRS）等。
 分为两个子层：逻辑链路控制（logical link control，LLC）子层和介质访问控制（Media access control，MAC）子层。
  1.物理层  物理层（Physical Layer）在局部局域网上传送数据帧（Data Frame），它负责管理电脑通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机接口卡等。]]></description>
-</item><item>
-    <title>Windows下的网络命令</title>
-    <link>https://example.com/windows-ip/</link>
-    <pubDate>Sat, 16 May 2020 22:25:36 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://example.com/windows-ip/</guid>
-    <description><![CDATA[Windows下
-ftp://192.168.0.9
-ipconfig
-nslookup
-set q=mx //查询邮件服务器
-set q=ns //查询dns服务器
-set q=a //查询服务器地址
-netstat -r //查看本地路由表 rout print
-netstat -na //查看本地连接和开放的端口
-netsh firewall //防火墙设置
-set
-net //本地详细设置
-net user add ？ //查询本地开放得端口
-nbtstat //显示协议和TCP/IP连接]]></description>
 </item></channel>
 </rss>

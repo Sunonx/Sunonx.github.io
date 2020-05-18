@@ -3,7 +3,40 @@
         <title>All Posts - Pipx</title>
         <link>https://example.com/posts/</link>
         <description>All Posts | Pipx</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 17 May 2020 11:51:36 &#43;0800</lastBuildDate><atom:link href="https://example.com/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 18 May 2020 17:59:08 &#43;0800</lastBuildDate><atom:link href="https://example.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Draw</title>
+    <link>https://example.com/draw/</link>
+    <pubDate>Mon, 18 May 2020 17:59:08 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/draw/</guid>
+    <description><![CDATA[记一次绘画作品 -情况描述-
+ 在2020年的大疫情面前，每一个人都是受害者，无一幸免。
+ 对于中国，我一直用“一方有难，八方支援”来描述它的团结。而此时更是彰显了这种中华儿女是一家的精神，可以看到，各方人士，各种职业者，都在积极配合工作，积极发挥自己的力量，来帮助祖国度过难关。对于祖国之外的东西，我不愿多说什么，因为事实胜于雄辩。火神雷神的火速建立，疫情的快速控制···，这些结果已经表明了很多东西。东方一直是一条龙，以它特有的方式保护着它的子民。而我们要做的便是努力长成鳞片，继而保护它。即使条件不够，无法成为龙鳞，也要安安静静地，健健康康的成为它的优质龙肉，以防内部腐化，以此造成更大的伤害。
+ 疫情期间各个地方都会开展宣传活动，我的学校也不例外，开了一期以“疫情，春天，五四，青年”为主题的海报活动，要求每个团支部上交一份海报，过期不交视为放弃。
+由于外甥女刚好有绘画的数码板，于是有空闲时间的我们开始了绘画之作。
+-作图时间: 6-7h
+-最终结果：
+-源图：]]></description>
+</item><item>
+    <title>Routing Exange Review</title>
+    <link>https://example.com/router/</link>
+    <pubDate>Mon, 18 May 2020 15:05:35 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://example.com/router/</guid>
+    <description><![CDATA[前言 基本概述：
+-指导教师：刘云生
+ 学习时间：2020.3.14-2020.5.20 教学内容：CCNA CCNP 考核内容：教材，CCNA题库(640-802) 考核题型：选择、填空、简答、综合配置 考试时间：2020.8.8&mdash;&amp; 参考教材：   -《路由交换技术》 清华大学出版社 吴建胜等
+ -《TCP/IP路由技术》 人民邮电出版社 葛健立等
+ -《 TCP/IP详解》
+C0 review OSI模型  7.应用层  应用层（Application Layer）提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如: HTTP、HTTPS、FTP、TELNET、SSH、SMTP、POP3、HTML等。
+ 6.表达层  表达层（Presentation Layer）把数据转换为能与接收者的系统格式兼容并适合传输的格式。
+ 5.会话层  会话层（Session Layer）负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接。
+ 4.传输层  传输层（Transport Layer）把传输表头（TH）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如:传输控制协议（TCP）等。
+ 3.网络层  网络层（Network Layer）决定数据的路径选择和转寄，将网络表头（NH）加至数据包，以形成报文。网络表头包含了网络数据。例如:互联网协议（IP）等。
+ 2.数据链路层  数据链路层（Data Link Layer）负责网络寻址、错误侦测和改错。当表头和表尾被加至数据包时，会形成信息框（Data Frame）。数据链表头（DLH）是包含了物理地址和错误侦测及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如以太网、无线局域网（Wi-Fi）和通用分组无线服务（GPRS）等。
+分为两个子层：逻辑链路控制（logical link control，LLC）子层和介质访问控制（Media access control，MAC）子层。
+ 1.物理层  物理层（Physical Layer）在局部局域网上传送数据帧（Data Frame），它负责管理电脑通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机接口卡等。]]></description>
+</item><item>
     <title>LoveIt-AddVideo</title>
     <link>https://example.com/addvideo/</link>
     <pubDate>Sun, 17 May 2020 11:51:36 &#43;0800</pubDate>
@@ -98,35 +131,5 @@ nbtstat //显示协议和TCP/IP连接]]></description>
     <description><![CDATA[成长的路上从来没有一帆风顺的，中国的成长也是如此。但愈是艰难，愈是磨练我们坚强的意志。疫情防控思政大课给我们上了很好的一课，让我对整个疫情防控过程有了更加深入的了解和认识。
 人类应与自然环境和谐相处。习近平总书记很早之前就说过：金山银山不如绿水青山。我们在快速发展经济的同时，一定要注意保护生态环境的平衡。人类的繁衍与生存的环境息息相关。对于野生动物的保护更是要加大力度。而此次疫情的爆发正是由于蝙蝠的非法交易，导致病毒迅速蔓延开来。不得不说， 我很敬佩和崇拜习总书记，敬佩他的魄力，敬佩他的执行力。在疫情爆发之后，习总书记亲自指挥，以中国人民的生命和健康权至上，武汉封城，从源头上隔离污染源，事实证明这一举措是有效的，是有用的。尽管病毒传播很快，但我们的医护人员，来自四面八方的爱心人士比它跑的更快。争分夺秒，与死亡赛跑，这期间有为之牺牲的勇士，有为之几天几夜奋战在前线的战士，向他们致敬，有他们在，这一次，我相信我们依旧胜利通关。除了前线，那些无偿为灾区捐款捐物的中国人民，也是伟大的。这是一场没有硝烟的战争，我们好好呆在家里就是在为国家做贡献了，从没有像此刻这样，让我看到一个民族的团结。我庆幸我生在华夏家，为祖国感到骄傲。疫情期间令我感触最深的是，中央派遣直升机亲自迎接被困海外的儿女门回家。这是如此的细心又温暖，不仅照顾生病的病人，还为远在他乡的游子门考虑，令人感动，有几个国家能做到这样啊。无疑，这次的疫情防控，方方面面，中国做出了榜样。  这世界上哪有天使，有的是这样一批90后，“03年非典时期，我们奋力守护90后，现在20年换我们90后奋力守护你们”，越来越多的90后穿上防护服，带上护目镜，他们化成天使，暂时的告别亲人，自愿申请奋战前线，也有很多90后，在自己的社会参与自愿服务，为地区的疫情防控奉献自己的力量。
 这是最坏的时代，也是最好的时代，90后的小伙们在疫情面前毫不退缩，勇往直上，这是他们青春的担当和责任，也是这个时代的骄傲与自豪。当然，这一切都有一个最核心的力量，那便是中国共产党的正确领导。有了党的领导，我们的民族才更加有族魂，才能更加的团结，凝聚一心，去战胜每一次的困难险阻，中国才能日益强大健壮起来。没有哪一项制度是完美的，但以人民的生命至上，不断学习改进和成长的制度就是我们需要和拥护的。我相信，在晴朗的天空下互相拥抱亲吻的日子就在明天。]]></description>
-</item><item>
-    <title>Vlan的划分</title>
-    <link>https://example.com/vlan/</link>
-    <pubDate>Sat, 16 May 2020 21:47:00 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://example.com/vlan/</guid>
-    <description><![CDATA[ip地址分类 在 A 类、B 类、C 类 IP 地址中：
-  如果主机号是全 1，那么这个地址为直接广播地址，它是用来使路由器将一个分组以广播形式发送给特定网络上的所有主机。
-  32 位全为 1 的 IP 地址 “255.255.255.255” 为受限广播地址用来将一个分组以广播方式发送给本网络中的所有主机，路由器则阻挡该分组通过，将其广播功能限制在本网内部。
-    A类IPv4地址 B类IPv4地址 C类IPv4地址 D类IPv4地址 E类IPv4地址     网络标志位 0 10 110 1110 11110   IP地址范围 1.0.0.0~127.255.255.255 128.0.0.0~191.255.255.255 192.0.0.0~223.255.255.255 224.0.0.0~239.255.255.255 240.0.0.0~247.255.255.255   可用IP地址范围 1.0.0.1~127.255.255.254 128.0.0.1~191.255.255.254 192.0.0.1~223.255.255.254     是否可以分配给主机使用 是 是 是 否 否   网络数量（个） 126 (27-2) 16384 (214) 2097152 (221) &mdash; &mdash;   每个网络中可容纳主机数（个） 16777214 (224-2) 65534 (216-2) 254 (28-2) &mdash; &mdash;   适用范围 大量主机的大型网络 中等规模主机数的网络 小型局域网 留给Internet体系结构委员会(IAB)使用【组播地址】 保留，仅作为搜索、Internet的实验和开发用   私有地址 10.]]></description>
-</item><item>
-    <title>English学习笔记(1)</title>
-    <link>https://example.com/english-01/</link>
-    <pubDate>Sat, 16 May 2020 21:36:48 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://example.com/english-01/</guid>
-    <description><![CDATA[One day 词汇（5500） 阅读 新题型 完型（最佳适应性） 翻译 写作
-真题中词汇解析  
-lodge v. 路途中的暂时休息 lodging n. 暂时休息的地方
-shelter n. 避难所
-dwell v 居住地 常住的
-house 房子`
-apparently 明显的
-involve v 涉及参与 be ~d in || ~ment n 参与
-provoke 激
-justify 证明···是正确的 justified 正确的，有道理的
-outrange = out 超过&ndash;rage 生气 ==== 愤怒
-commit a crime 犯事；致力于，有责任 be commited to == be dedicated to 有责任做某事
-abide by =obey 遵守
-renege on 拒绝接受（超纲词）]]></description>
 </item></channel>
 </rss>
